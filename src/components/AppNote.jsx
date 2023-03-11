@@ -50,6 +50,7 @@ function AppNote() {
 
   return (
     <>
+      <input type="search" id="search" placeholder="search here" />
       <form onSubmit={formik.handleSubmit}>
         <div className="form-control">
           <textarea

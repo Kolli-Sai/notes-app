@@ -104,3 +104,12 @@ button:hover {
   bottom: 0px;
   right: 0px;
 }
+
+#search {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
