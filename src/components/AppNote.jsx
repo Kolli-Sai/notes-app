@@ -7,6 +7,10 @@ import NoteList from "./NoteList";
 function AppNote() {
   const [items, setItems] = useState([]);
 
+  // let data = localStorage.setItem("data", JSON.stringify(items));
+  // console.log(data);
+  // console.log(typeof data);
+
   const initialValues = {
     item: "",
   };
@@ -27,6 +31,7 @@ function AppNote() {
 
     const newitem = [...items, li];
     setItems(newitem);
+    localStorage.setItem("data", JSON.stringify(newitem));
     values.item = "";
   };
 
@@ -44,6 +49,9 @@ function AppNote() {
     const newItems = [...items];
     newItems.splice(index, 1);
     setItems(newItems);
+    let arrayOfArrays = JSON.parse(localStorage.getItem("data"));
+    arrayOfArrays.splice(index, 1);
+    localStorage.setItem("data", JSON.stringify(arrayOfArrays));
   };
 
   return (
@@ -63,7 +71,10 @@ function AppNote() {
         </div>
       </form>
       <div className="container">
-        <NoteList items={items} handleDelete={handleDelete} />
+        <NoteList
+          items={JSON.parse(localStorage.getItem("data"))}
+          handleDelete={handleDelete}
+        />
       </div>
     </>
   );
