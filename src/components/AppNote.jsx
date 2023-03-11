@@ -11,6 +11,8 @@ function AppNote() {
     item: "",
   };
 
+  //localstorage
+
   function getDate() {
     const today = new Date();
     const yyyy = today.getFullYear();
