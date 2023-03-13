@@ -6,6 +6,9 @@ import NoteList from "./NoteList";
 
 function AppNote() {
   const [items, setItems] = useState([]);
+  // localStorage.setItem("myData", JSON.stringify(items));
+  const storedData = localStorage.getItem("myData");
+  const data = JSON.parse(storedData);
 
   const initialValues = {
     item: "",
@@ -29,6 +32,7 @@ function AppNote() {
 
     const newitem = [...items, li];
     setItems(newitem);
+    localStorage.setItem("myData", JSON.stringify(newitem));
     values.item = "";
   };
 
@@ -46,6 +50,8 @@ function AppNote() {
     const newItems = [...items];
     newItems.splice(index, 1);
     setItems(newItems);
+    data.splice(index, 1);
+    localStorage.setItem("myData", JSON.stringify(data));
   };
 
   return (
@@ -66,7 +72,7 @@ function AppNote() {
         </div>
       </form>
       <div className="container">
-        <NoteList items={items} handleDelete={handleDelete} />
+        <NoteList items={data} handleDelete={handleDelete} />
       </div>
     </>
   );
